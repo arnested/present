@@ -67,8 +67,8 @@ We should be able to:
 
 Yes, I did:
 
-- patch versions of Go
-- go tip versionn if you want to be ahead of your time
+- patch level versions of Go
+- go tip version if you want to be ahead of your time
 
 And I didn't even mention it is coded in TypeScript 🤦
 
