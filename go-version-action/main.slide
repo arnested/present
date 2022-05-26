@@ -1,0 +1,81 @@
+# Using the right go versions in your CI pipeline
+
+26 May 2022
+
+Arne Jørgensen
+Senior Developer, Systems Architect, and Partner
+Reload A/S
+
+arne@arnested.dk
+arne@reload.dk
+https://arnested.dk
+https://github.com/arnested
+@arnejoergensen
+
+https://github.com/marketplace/actions/go-version-action
+
+## Consistency is hard!
+
+.background Eating-Spaghetti.svg
+
+: Looking at some of my go based projects I discovered:
+
+- using one version in `go.mod`
+- another in my CI pipeline
+- rarely testing on the newest Go version
+
+## In a perfect world...
+
+What would we actually like to test on?
+
+- `go.mod` is lowest supported Go version
+- we want to support up to the latest released Go version
+- our test matrix should span both of them and every release inbetween
+
+We should be able to:
+
+- only specify the lowest version in `go.mod`
+- get the latest and all in between versions from [go.dev/dl](https://go.dev/dl/) ([even in JSON](https://go.dev/dl/?mode=json))
+
+##
+
+.image action.png
+
+## Simple GitHub Actions workflow
+
+.code workflow-1.yml
+
+## With a build matrix (1/3)
+
+.code workflow-2.1.yml
+
+ ... continues on next slide
+
+## With a build matrix (2/3)
+
+ ... continued from previous slide
+
+.code workflow-2.2.yml
+
+## With a build matrix (3/3)
+
+.image action-matrix-summary.png
+
+: old screenshot - 1.17 was latest go version
+
+## Didn't you ignore something?
+
+Yes, I did:
+
+- patch versions of Go
+- go tip versionn if you want to be ahead of your time
+
+And I didn't even mention it is coded in TypeScript 🤦
+
+## Examples of uses
+
+.link https://github.com/arnested/ldddns
+
+.link https://github.com/arnested/dsupdate
+
+[22 uses according to GitHub - only 7 of them mine](https://github.com/arnested/go-version-action/network/dependents?package_id=UGFja2FnZS0yOTUwNDc2MDI4)
